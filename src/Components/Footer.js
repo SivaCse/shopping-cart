@@ -14,6 +14,6 @@ const Footer = ({ showCart, cartItems }) => {
 Footer.propTypes = {
   showCart: PropTypes.bool.isRequired,
   cartItems: PropTypes.array
-}
+};
 
 export default Footer;
