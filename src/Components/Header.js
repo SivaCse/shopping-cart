@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 const Header = ({ message, showCart, cartItems }) => {
   return (
@@ -14,5 +15,11 @@ const Header = ({ message, showCart, cartItems }) => {
     </div>
   );
 };
+
+Header.propTypes = {
+  message: PropTypes.string,
+  showCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.array
+}
 
 export default Header;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Item from './Item';
 import Pagination, { pageData } from './Pagination';
 
@@ -38,5 +39,14 @@ const List = ({
     </div>
   );
 };
+
+List.propTypes = {
+  items: PropTypes.array.isRequired,
+  limit: PropTypes.number.isRequired,
+  onQtyChange: PropTypes.func.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired
+}
 
 export default List;

@@ -1,43 +1,47 @@
 import React, { Component } from "react";
 import List from "../Components/List";
-import Cart from "../Components/Cart";
-import Items from "../Api/products";
 import ProductService from "../Services/ProductService";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { STATE } from "../Constants";
+import { APP_STATE } from "../Constants";
 
 const pService = new ProductService();
 
 export default class CartWidget extends Component {
   constructor(props) {
     super(props);
-    this.state = STATE;
+    this.state = APP_STATE;
+    this.onQtyChange = this.onQtyChange.bind(this);
+    this.alertMessage = this.alertMessage.bind(this);
+    this.onQtyChange = this.alertMessage.bind(this);
+    this.handleDisplayCart = this.handleDisplayCart.bind(this);
+    this.onChangePage = this.onChangePage.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
-  onQtyChange = (item, qty) => {
+  onQtyChange(item, qty) {
     this.setState({ items: pService.addItem(item, qty) });
   }
 
-  addToCart = (item) => {
+  addToCart(item) {
     this.setState({
       cartItems: pService.addToCart(item, this.state.cartItems)
     });
     this.alertMessage();
   }
 
-  alertMessage = () => {
+  alertMessage() {
     this.setState({ message: `Item Added to Cart` });
     setTimeout(() => {
       this.setState({ message: `` });
     }, 1500);
   }
 
-  handleDisplayCart = () => {
+  handleDisplayCart() {
     this.setState({ showCart: !this.state.showCart });
   }
 
-  onChangePage = (page) => {
+  onChangePage(page) {
     this.setState({ currentPage: page });
   }
 

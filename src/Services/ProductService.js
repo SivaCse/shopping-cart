@@ -1,6 +1,7 @@
 import Items from "../Api/products";
 
 export default class ProductService {
+  
   getItemIndex({ name }) {
     return Items.findIndex(item => item.name === name);
   }
