@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import List from "../Components/List";
-import ProductService from "../Services/ProductService";
+import ProductStore from "../Store/Product";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { APP_STATE } from "../Constants";
 
-const pService = new ProductService();
 
 export default class CartWidget extends Component {
   constructor(props) {
@@ -20,12 +19,12 @@ export default class CartWidget extends Component {
   }
 
   onQtyChange(item, qty) {
-    this.setState({ items: pService.addItem(item, qty) });
+    this.setState({ items: ProductStore.addItem(item, qty) });
   }
 
   addToCart(item) {
     this.setState({
-      cartItems: pService.addToCart(item, this.state.cartItems)
+      cartItems: ProductStore.addToCart(item, this.state.cartItems)
     });
     this.alertMessage();
   }
@@ -67,7 +66,6 @@ export default class CartWidget extends Component {
             />
           )}
 
-          <Footer showCart={showCart} cartItems={cartItems} />
         </div>
       </div>
     );

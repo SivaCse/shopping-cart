@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import CartWidget from './Containers/CartWidget';
+
+import Routes from './Routes';
  
 
 
 render(
-    <CartWidget />,
+    <Routes />,
     document.getElementById('app')
 );

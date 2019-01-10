@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import ProductStore from "../Store/Product";
 
-const Header = ({ message, showCart, cartItems }) => {
+const Header = ({ message, showCart }) => {
   return (
     <div>
       {message && (
@@ -10,7 +11,7 @@ const Header = ({ message, showCart, cartItems }) => {
         </div>
       )}
       <button type="button" className="btn btn-primary" onClick={showCart}>
-        Show Cart <span className="badge badge-light">{cartItems.length}</span>
+        Items in Cart <span className="badge badge-light">{ProductStore.cartItems.length}</span>
       </button>
     </div>
   );
@@ -18,8 +19,7 @@ const Header = ({ message, showCart, cartItems }) => {
 
 Header.propTypes = {
   message: PropTypes.string,
-  showCart: PropTypes.func.isRequired,
-  cartItems: PropTypes.array
+  showCart: PropTypes.func.isRequired
 }
 
 export default Header;

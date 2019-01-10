@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import Cart from "../Components/Cart";
+import ProductStore from "../Store/Product";
 
 
-const Footer = ({ showCart, cartItems }) => {
+const Footer = () => {
   return (
-    <div>
-       {showCart && <Cart items={cartItems} />}
+    <div className="row">
+        <div className="col-md-4">
+       <Cart items={ProductStore.cartItems} />
+       </div>
     </div>
   );
-};
-
-Footer.propTypes = {
-  showCart: PropTypes.bool.isRequired,
-  cartItems: PropTypes.array
 };
 
 export default Footer;

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 const Item = ({ item, onQtyChange, addToCart }) => {
   return (
     <tr>
-      <td>{item.name}</td>
+      <td><Link to={`product-detail/${item.name}`}>{item.name}</Link></td>
       <td>
         <span className="item-price">{item.price}</span>
       </td>
